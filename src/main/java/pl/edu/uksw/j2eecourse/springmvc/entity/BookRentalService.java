@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.edu.uksw.j2eecourse.jpa.entity;
+package pl.edu.uksw.j2eecourse.springmvc.entity;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,10 @@ public interface BookRentalService {
     
     public User registerUser(String name);
     public Book registerBook(String title, String isbn, int instanceCount);
+
+    @Transactional
+    Book registerBook(Book book);
+
     public List<User> listUsers();
     public List<Book> listBooks();
     /** Sprawdza czy choć jeden egzemplarz książki jest dostępny */

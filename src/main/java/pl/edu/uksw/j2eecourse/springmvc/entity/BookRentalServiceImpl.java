@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.edu.uksw.j2eecourse.jpa.entity;
+package pl.edu.uksw.j2eecourse.springmvc.entity;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -55,6 +56,15 @@ public class BookRentalServiceImpl implements BookRentalService{
         }
         entityManager.persist(b);
         return b;
+    }
+
+    @Override
+    @Transactional
+    public Book registerBook(Book book) {
+        book.setInstances(new ArrayList<BookInstance>());
+        book.getInstances().add(new BookInstance());
+        entityManager.persist(book);
+        return book;
     }
 
     @Override

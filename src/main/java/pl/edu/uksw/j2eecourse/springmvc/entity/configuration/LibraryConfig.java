@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.edu.uksw.j2eecourse.jpa.entity;
+package pl.edu.uksw.j2eecourse.springmvc.entity.configuration;
 
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
@@ -33,7 +33,7 @@ public class LibraryConfig {
    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
       LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
       em.setDataSource(dataSource());
-      em.setPackagesToScan(new String[] { "pl.edu.uksw.j2eecourse.jpa" });
+      em.setPackagesToScan(new String[] { "pl.edu.uksw.j2eecourse.springmvc" });
  
       JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
       em.setJpaVendorAdapter(vendorAdapter);

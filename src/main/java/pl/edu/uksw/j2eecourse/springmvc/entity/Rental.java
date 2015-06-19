@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.edu.uksw.j2eecourse.jpa.entity;
+package pl.edu.uksw.j2eecourse.springmvc.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
