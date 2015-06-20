@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.edu.uksw.j2eecourse.springmvc.entity;
+package pl.edu.uksw.j2eecourse.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.edu.uksw.j2eecourse.entity.Book;
+import pl.edu.uksw.j2eecourse.entity.User;
+import pl.edu.uksw.j2eecourse.service.BookRentalService;
 
 import javax.annotation.PostConstruct;
 import java.util.List;

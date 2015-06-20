@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.edu.uksw.j2eecourse.springmvc.entity;
+package pl.edu.uksw.j2eecourse.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.edu.uksw.j2eecourse.entity.Book;
+import pl.edu.uksw.j2eecourse.entity.BookInstance;
+import pl.edu.uksw.j2eecourse.entity.Rental;
+import pl.edu.uksw.j2eecourse.entity.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.ArrayList;
@@ -16,14 +21,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author Aleksander Nowinski <a.nowinski@icm.edu.pl>
  */
 @Service
-public class BookRentalServiceImpl implements BookRentalService{
-    @PersistenceContext 
+public class BookRentalServiceImpl implements BookRentalService {
+    @PersistenceContext
     EntityManager entityManager;
-    
+
 
     @Override
     @Transactional
@@ -77,6 +81,17 @@ public class BookRentalServiceImpl implements BookRentalService{
     public List<Book> listBooks() {
         Query q = entityManager.createQuery("Select b from Book b");
         return q.getResultList();
+    }
+
+    @Override
+    public Book findByIsbn(String isbn) {
+        Query q = entityManager.createQuery("Select b from Book b where b.isbn = :isbn");
+        q.setParameter("isbn", isbn);
+        try {
+            return (Book) q.getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
 
     @Override

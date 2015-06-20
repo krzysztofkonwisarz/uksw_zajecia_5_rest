@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.edu.uksw.j2eecourse.springmvc.entity;
+package pl.edu.uksw.j2eecourse.service;
 
 import org.springframework.transaction.annotation.Transactional;
+import pl.edu.uksw.j2eecourse.entity.Book;
+import pl.edu.uksw.j2eecourse.entity.Rental;
+import pl.edu.uksw.j2eecourse.entity.User;
 
 import java.util.Date;
 import java.util.List;
@@ -28,6 +31,9 @@ public interface BookRentalService {
 
     public List<User> listUsers();
     public List<Book> listBooks();
+
+    Book findByIsbn(String isbn);
+
     /** Sprawdza czy choć jeden egzemplarz książki jest dostępny */
     public boolean isBookAvailable(String isbn);
     /** Pozycza książkę użytkownikowi. Jeśli rentDate jest puste (null) używa bieżącej daty. */
